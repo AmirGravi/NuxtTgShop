@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    src: url("./ttf/YekanBakh-Regular.ttf");
+    src: url("./woff/YekanBakh-Regular.woff") format("woff2"),
+    url("./woff2/YekanBakh-Regular.woff2") format("woff"),
+    url("./ttf/YekanBakh-Regular.ttf") format("truetype");
+  }
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    font-weight: 200;
+    src: url("./ttf/YekanBakh-Light.ttf");
+    src: url("./woff/YekanBakh-Light.woff") format("woff2"),
+    url("./woff2/YekanBakh-Light.woff2") format("woff"),
+    url("./ttf/YekanBakh-Light.ttf") format("truetype");
+  }
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    font-weight: 100;
+    src: url("./ttf/YekanBakh-Thin.ttf");
+    src: url("./woff/YekanBakh-Thin.woff") format("woff2"),
+    url("./woff2/YekanBakh-Thin.woff2") format("woff"),
+    url("./ttf/YekanBakh-Thin.ttf") format("truetype");
+  }
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    font-weight: 400;
+    src: url("./ttf/YekanBakh-SemiBold.ttf");
+    src: url("./woff/YekanBakh-SemiBold.woff") format("woff2"),
+    url("./woff2/YekanBakh-SemiBold.woff2") format("woff"),
+    url("./ttf/YekanBakh-SemiBold.ttf") format("truetype");
+  }
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    font-weight: 500;
+    src: url("./ttf/YekanBakh-Bold.ttf");
+    src: url("./woff/YekanBakh-Bold.woff") format("woff2"),
+    url("./woff2/YekanBakh-Bold.woff2") format("woff"),
+    url("./ttf/YekanBakh-Bold.ttf") format("truetype");
+  }
+@font-face {
+    font-family: Yekan;
+    font-style: normal;
+    font-weight: bold;
+    src: url("./ttf/YekanBakh-Black.ttf");
+    src: url("./woff/YekanBakh-Black.woff") format("woff2"),
+    url("./woff2/YekanBakh-Black.woff2") format("woff"),
+    url("./ttf/YekanBakh-Black.ttf") format("truetype");
+  }
+ 

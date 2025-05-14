@@ -1,0 +1,172 @@
+/* حالت پیش‌فرض برای همه‌ی سایزها (دسکتاپ و دستگاه‌های بزرگ) */
+.fs-1 { font-size: 1px; }
+.fs-2 { font-size: 2px; }
+.fs-3 { font-size: 3px; }
+.fs-4 { font-size: 4px; }
+.fs-5 { font-size: 5px; }
+.fs-6 { font-size: 6px; }
+.fs-7 { font-size: 7px; }
+.fs-8 { font-size: 8px; }
+.fs-9 { font-size: 9px; }
+.fs-10 { font-size: 10px; }
+.fs-11 { font-size: 11px; }
+.fs-12 { font-size: 12px; }
+.fs-13 { font-size: 13px; }
+.fs-14 { font-size: 14px; }
+.fs-15 { font-size: 15px; }
+.fs-16 { font-size: 16px; }
+.fs-17 { font-size: 17px; }
+.fs-18 { font-size: 18px; }
+.fs-19 { font-size: 19px; }
+.fs-20 { font-size: 20px; }
+.fs-21 { font-size: 21px; }
+.fs-22 { font-size: 22px; }
+.fs-23 { font-size: 23px; }
+.fs-24 { font-size: 24px; }
+.fs-25 { font-size: 25px; }
+.fs-26 { font-size: 26px; }
+.fs-27 { font-size: 27px; }
+.fs-28 { font-size: 28px; }
+.fs-29 { font-size: 29px; }
+.fs-30 { font-size: 30px; }
+.fs-31 { font-size: 31px; }
+.fs-32 { font-size: 32px; }
+.fs-33 { font-size: 33px; }
+.fs-34 { font-size: 34px; }
+.fs-35 { font-size: 35px; }
+.fs-36 { font-size: 36px; }
+.fs-37 { font-size: 37px; }
+.fs-38 { font-size: 38px; }
+.fs-39 { font-size: 39px; }
+.fs-40 { font-size: 40px; }
+
+/* برای تبلت و کوچکتر (max-width: 991px) */
+@media screen and (max-width: 991px) {
+    .fs-1 { font-size: 2px; }
+    .fs-2 { font-size: 3px; }
+    .fs-3 { font-size: 4px; }
+    .fs-4 { font-size: 5px; }
+    .fs-5 { font-size: 6px; }
+    .fs-6 { font-size: 7px; }
+    .fs-7 { font-size: 8px; }
+    .fs-8 { font-size: 9px; }
+    .fs-9 { font-size: 10px; }
+    .fs-10 { font-size: 11px; }
+    .fs-11 { font-size: 12px; }
+    .fs-12 { font-size: 13px; }
+    .fs-13 { font-size: 14px; }
+    .fs-14 { font-size: 15px; }
+    .fs-15 { font-size: 16px; }
+    .fs-16 { font-size: 17px; }
+    .fs-17 { font-size: 18px; }
+    .fs-18 { font-size: 19px; }
+    .fs-19 { font-size: 20px; }
+    .fs-20 { font-size: 21px; }
+    .fs-21 { font-size: 22px; }
+    .fs-22 { font-size: 23px; }
+    .fs-23 { font-size: 24px; }
+    .fs-24 { font-size: 25px; }
+    .fs-25 { font-size: 26px; }
+    .fs-26 { font-size: 27px; }
+    .fs-27 { font-size: 28px; }
+    .fs-28 { font-size: 29px; }
+    .fs-29 { font-size: 30px; }
+    .fs-30 { font-size: 31px; }
+    .fs-31 { font-size: 32px; }
+    .fs-32 { font-size: 33px; }
+    .fs-33 { font-size: 34px; }
+    .fs-34 { font-size: 35px; }
+    .fs-35 { font-size: 36px; }
+    .fs-36 { font-size: 37px; }
+    .fs-37 { font-size: 38px; }
+    .fs-38 { font-size: 39px; }
+    .fs-39 { font-size: 40px; }
+    .fs-40 { font-size: 41px; }
+}
+
+/* فقط برای موبایل (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .fs-1 { font-size: 3px; }
+    .fs-2 { font-size: 4px; }
+    .fs-3 { font-size: 5px; }
+    .fs-4 { font-size: 6px; }
+    .fs-5 { font-size: 7px; }
+    .fs-6 { font-size: 8px; }
+    .fs-7 { font-size: 9px; }
+    .fs-8 { font-size: 10px; }
+    .fs-9 { font-size: 11px; }
+    .fs-10 { font-size: 12px; }
+    .fs-11 { font-size: 13px; }
+    .fs-12 { font-size: 14px; }
+    .fs-13 { font-size: 15px; }
+    .fs-14 { font-size: 16px; }
+    .fs-15 { font-size: 17px; }
+    .fs-16 { font-size: 18px; }
+    .fs-17 { font-size: 19px; }
+    .fs-18 { font-size: 20px; }
+    .fs-19 { font-size: 21px; }
+    .fs-20 { font-size: 22px; }
+    .fs-21 { font-size: 23px; }
+    .fs-22 { font-size: 24px; }
+    .fs-23 { font-size: 25px; }
+    .fs-24 { font-size: 26px; }
+    .fs-25 { font-size: 27px; }
+    .fs-26 { font-size: 28px; }
+    .fs-27 { font-size: 29px; }
+    .fs-28 { font-size: 30px; }
+    .fs-29 { font-size: 31px; }
+    .fs-30 { font-size: 32px; }
+    .fs-31 { font-size: 33px; }
+    .fs-32 { font-size: 34px; }
+    .fs-33 { font-size: 35px; }
+    .fs-34 { font-size: 36px; }
+    .fs-35 { font-size: 37px; }
+    .fs-36 { font-size: 38px; }
+    .fs-37 { font-size: 39px; }
+    .fs-38 { font-size: 40px; }
+    .fs-39 { font-size: 41px; }
+    .fs-40 { font-size: 42px; }
+}
+
+
+
+/*   font weights    */
+
+/* وزن فونت عمومی (پیش‌فرض) */
+@media screen and (min-width: 0) {
+    .fw-100 { font-weight: 100 !important; }
+    .fw-200 { font-weight: 200 !important; }
+    .fw-300 { font-weight: 300 !important; }
+    .fw-400 { font-weight: 400 !important; }
+    .fw-500 { font-weight: 500 !important; }
+    .fw-600 { font-weight: 600 !important; }
+    .fw-700 { font-weight: 700 !important; }
+    .fw-800 { font-weight: 800 !important; }
+    .fw-900 { font-weight: 900 !important; }
+}
+
+/* برای تبلت و موبایل (عرض کمتر از 992px) */
+@media screen and (max-width: 991px) {
+    .fw-t-100 { font-weight: 100 !important; }
+    .fw-t-200 { font-weight: 200 !important; }
+    .fw-t-300 { font-weight: 300 !important; }
+    .fw-t-400 { font-weight: 400 !important; }
+    .fw-t-500 { font-weight: 500 !important; }
+    .fw-t-600 { font-weight: 600 !important; }
+    .fw-t-700 { font-weight: 700 !important; }
+    .fw-t-800 { font-weight: 800 !important; }
+    .fw-t-900 { font-weight: 900 !important; }
+}
+
+/* فقط موبایل (عرض کمتر از 600px) */
+@media screen and (max-width: 599px) {
+    .fw-m-100 { font-weight: 100 !important; }
+    .fw-m-200 { font-weight: 200 !important; }
+    .fw-m-300 { font-weight: 300 !important; }
+    .fw-m-400 { font-weight: 400 !important; }
+    .fw-m-500 { font-weight: 500 !important; }
+    .fw-m-600 { font-weight: 600 !important; }
+    .fw-m-700 { font-weight: 700 !important; }
+    .fw-m-800 { font-weight: 800 !important; }
+    .fw-m-900 { font-weight: 900 !important; }
+}
