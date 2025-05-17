@@ -4,10 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
   components: true,
+  ssr: false,
   css: [
     'vuetify/styles',
     '@mdi/font/css/materialdesignicons.css',
     '@/assets/styles/main.css',
+    '@/assets/styles/vuetify-custom.css',
     '@/assets/fonts/IranSans/fontiran.css',
     '@/assets/styles/font-style.css',
 

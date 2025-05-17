@@ -13,7 +13,7 @@
 
 
 
-      <ProductDisplayMinimal  :products="productList" />
+      <ProductDisplayMinimal   :products="productList" />
 
 
 
@@ -68,8 +68,15 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {ref} from "vue";
+import useAuth from '../composable/useAuth.js'
 
 
+const { hasRole, isLoggedIn } = useAuth()
+onMounted(async () => {
+  console.log(isLoggedIn());
+  console.log(hasRole('admin'));
+
+})
 
 const productList = ref([
   {

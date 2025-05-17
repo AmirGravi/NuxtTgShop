@@ -91,7 +91,7 @@
         <v-col class="d-flex align-center justify-space-between" cols="12">
 
           <div class="d-flex align-center">
-            <div class="d-flex ">
+            <div class="d-flex  cursor-pointer">
               <v-icon color="white" icon="mdi-menu"></v-icon>
               <span class="pr-2 text-white d-flex align-center justify-center"
                     style="font-size: 15px; font-weight: 200;">محصولات</span>
@@ -104,11 +104,14 @@
             </div>
 
 
-            <div class="d-flex ga-5 pr-5">
+            <div class="d-flex ga-5 pr-5 cursor-pointer">
               <!-- آیکن پروفایل -->
               <v-tooltip :offset="18" location="bottom">
                 <template #activator="{ props }">
-                  <v-icon color="white" v-bind="props">mdi-account-circle</v-icon>
+                  <router-link :to="hasLogin ?  '/profile' : '/login'  ">
+
+                  <v-icon color="white"  v-bind="props">mdi-account-circle</v-icon>
+                  </router-link>
                 </template>
                 <span>پروفایل</span>
               </v-tooltip>
@@ -148,11 +151,16 @@
 import {ref, onMounted, onBeforeUnmount} from 'vue'
 
 import {useDisplay} from "vuetify";
+import useAuth from "~/composable/useAuth.js";
 
 
 const {mdAndUp, smAndDown} = useDisplay()
 const mobileMenuOpen = ref(null)
 const menuMode = ref('');
+const { hasRole, isLoggedIn } = useAuth()
+const hasLogin = computed(() => isLoggedIn())
+
+
 const categories = ref([
   {
     title: 'کفش ورزشی',
@@ -176,9 +184,9 @@ const scrollY = ref(0)
 
 const computedHeight = computed(() => {
   if (isHovering.value) {
-    return 70
+    return 65
   }
-  return scrollY.value > 20 ? 50 : 70
+  return scrollY.value > 20 ? 50 : 65
 })
 const handleScroll = () => {
   scrollY.value = window.scrollY
