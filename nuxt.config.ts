@@ -16,14 +16,19 @@ export default defineNuxtConfig({
 
   ],
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify' ],
   },
-  App: {
+  app: {
     head: {
       link: [
         {
           rel: 'stylesheet',
           href: 'https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css'
+        },
+        {
+          rel: 'stylesheet' ,
+          href: 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'
+
         }
       ]
     }

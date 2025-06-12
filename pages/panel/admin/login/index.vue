@@ -1,8 +1,7 @@
 <template>
   <v-card
-
       :width="smAndDown ? '100%' : '400px' "
-      :height="smAndDown ? '100vh' : '600px' "
+      :height="smAndDown ? '100vh' : '750px' "
       :class="[smAndDown ?  'rounded-0' : 'rounded-lg']"
       class="d-flex flex-column justify-center align-center border-sm "
   >
@@ -30,9 +29,9 @@
 
           <CeCustomLogin class="my-5" v-model="enterInput"/>
 
-          <abtn color="error" @keyup.enter="checkUser" @click="checkUser" class="w-100" :loading="loading" :disabled="loading">
+          <v-btn color="error" @click="checkUser" class="w-100" :loading="loading" :disabled="loading">
             ادامه
-          </abtn>
+          </v-btn>
         </v-card-text>
       </v-window-item>
 
@@ -58,11 +57,11 @@
               clearable
           />
 
-          <abtn color="error" class="w-100" @click="login" :loading="loading" :disabled="loading">
+          <v-btn color="error" class="w-100" @click="login" :loading="loading" :disabled="loading">
             ورود
-          </abtn>
+          </v-btn>
 
-          <abtn  class="mt-3 w-100" @click="step = 1">بازگشت</abtn>
+          <v-btn text class="mt-3 w-100" @click="step = 1">بازگشت</v-btn>
         </v-card-text>
       </v-window-item>
 
@@ -80,13 +79,13 @@
           </span>
           <v-text-field
               label="کد"
-            v-model="entryCode"
+              v-model="entryCode"
           />
-          <abtn color="error" class="w-100" @click="verifyCode" :loading="loading" :disabled="loading ">
+          <v-btn color="error" class="w-100" @click="verifyCode" :loading="loading" :disabled="loading ">
             تایید
-          </abtn>
+          </v-btn>
 
-          <abtn text class="mt-3 w-100" @click="step = 1">بازگشت</abtn>
+          <v-btn text class="mt-3 w-100" @click="step = 1">بازگشت</v-btn>
         </v-card-text>
       </v-window-item>
 
@@ -114,11 +113,11 @@
               type="password"
           />
 
-          <abtn color="error" class="w-100" @click="register" :loading="loading" :disabled="loading ">
+          <v-btn color="error" class="w-100" @click="register" :loading="loading" :disabled="loading ">
             ورود
-          </abtn>
+          </v-btn>
 
-          <abtn  class="mt-3 w-100" @click="step = 1">بازگشت</abtn>
+          <v-btn text class="mt-3 w-100" @click="step = 1">بازگشت</v-btn>
         </v-card-text>
       </v-window-item>
 
@@ -127,12 +126,11 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useDisplay } from 'vuetify'
 import axios from 'axios'
 import CeCustomLogin from './../../components/CE/custom-login.vue'
 import { useRouter } from 'vue-router';
-import { ref , onMounted, onUnmounted } from 'vue'
-import Abtn from "~/components/CE/abtn.vue";
 
 const { $axios } = useNuxtApp()
 
@@ -147,56 +145,6 @@ const loading = ref(false)
 const userExists = ref(false)
 const { smAndDown } = useDisplay()
 const router = useRouter();
-
-
-function enterHandler(){
-  if (loading.value) return
-
-  switch(step.value){
-    case 1 :
-      checkUser()
-      break;
-    case 2 :
-      login()
-      break;
-    case 3 :
-      verifyCode()
-      break;
-    case 4 :
-      register()
-  }
-}
-
-function backspaceHandler(){
-  if (loading.value) return
-  switch(step.value){
-    case 2:
-     step.value = 1
-      break;
-    case 3:
-      step.value = 2
-      break;
-    case 4:
-      step.value = 3
-      break;
-  }
-}
-
-function keyDown(e){
-  if (e.key === 'Enter'){
-    enterHandler()
-  }else if(e.key === 'Escape'){
-    backspaceHandler()
-  }
-}
-onMounted(() => {
-  window.addEventListener('keydown', keyDown)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', keyDown)
-})
-
 
 
 async function checkUser() {
@@ -292,7 +240,7 @@ async function login() {
       localStorage.setItem('token', response.data.token);
     }
     router.push('/');
-    } catch (error) {
+  } catch (error) {
     alert('خطا در ورود: ' + error.message)
   } finally {
     loading.value = false

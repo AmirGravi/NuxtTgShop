@@ -1,133 +1,132 @@
 /* حالت پیش‌فرض برای همه‌ی سایزها (دسکتاپ و دستگاه‌های بزرگ) */
-.fs-1 { font-size: 1px; }
-.fs-2 { font-size: 2px; }
-.fs-3 { font-size: 3px; }
-.fs-4 { font-size: 4px; }
-.fs-5 { font-size: 5px; }
-.fs-6 { font-size: 6px; }
-.fs-7 { font-size: 7px; }
-.fs-8 { font-size: 8px; }
-.fs-9 { font-size: 9px; }
-.fs-10 { font-size: 10px; }
-.fs-11 { font-size: 11px; }
-.fs-12 { font-size: 12px; }
-.fs-13 { font-size: 13px; }
-.fs-14 { font-size: 14px; }
-.fs-15 { font-size: 15px; }
-.fs-16 { font-size: 16px; }
-.fs-17 { font-size: 17px; }
-.fs-18 { font-size: 18px; }
-.fs-19 { font-size: 19px; }
-.fs-20 { font-size: 20px; }
-.fs-21 { font-size: 21px; }
-.fs-22 { font-size: 22px; }
-.fs-23 { font-size: 23px; }
-.fs-24 { font-size: 24px; }
-.fs-25 { font-size: 25px; }
-.fs-26 { font-size: 26px; }
-.fs-27 { font-size: 27px; }
-.fs-28 { font-size: 28px; }
-.fs-29 { font-size: 29px; }
-.fs-30 { font-size: 30px; }
-.fs-31 { font-size: 31px; }
-.fs-32 { font-size: 32px; }
-.fs-33 { font-size: 33px; }
-.fs-34 { font-size: 34px; }
-.fs-35 { font-size: 35px; }
-.fs-36 { font-size: 36px; }
-.fs-37 { font-size: 37px; }
-.fs-38 { font-size: 38px; }
-.fs-39 { font-size: 39px; }
-.fs-40 { font-size: 40px; }
+.fs-1 { font-size: 1px !important; }
+.fs-2 { font-size: 2px !important; }
+.fs-3 { font-size: 3px !important; }
+.fs-4 { font-size: 4px !important; }
+.fs-5 { font-size: 5px !important; }
+.fs-6 { font-size: 6px !important; }
+.fs-7 { font-size: 7px !important; }
+.fs-8 { font-size: 8px !important; }
+.fs-9 { font-size: 9px !important; }
+.fs-10 { font-size: 10px !important; }
+.fs-11 { font-size: 11px !important; }
+.fs-12 { font-size: 12px !important; }
+.fs-13 { font-size: 13px !important; }
+.fs-14 { font-size: 14px !important; }
+.fs-15 { font-size: 15px !important; }
+.fs-16 { font-size: 16px !important; }
+.fs-17 { font-size: 17px !important; }
+.fs-18 { font-size: 18px !important; }
+.fs-19 { font-size: 19px !important; }
+.fs-20 { font-size: 20px !important; }
+.fs-21 { font-size: 21px !important; }
+.fs-22 { font-size: 22px !important; }
+.fs-23 { font-size: 23px !important; }
+.fs-24 { font-size: 24px !important; }
+.fs-25 { font-size: 25px !important; }
+.fs-26 { font-size: 26px !important; }
+.fs-27 { font-size: 27px !important; }
+.fs-28 { font-size: 28px !important; }
+.fs-29 { font-size: 29px !important; }
+.fs-30 { font-size: 30px !important; }
+.fs-31 { font-size: 31px !important; }
+.fs-32 { font-size: 32px !important; }
+.fs-33 { font-size: 33px !important; }
+.fs-34 { font-size: 34px !important; }
+.fs-35 { font-size: 35px !important; }
+.fs-36 { font-size: 36px !important; }
+.fs-37 { font-size: 37px !important; }
+.fs-38 { font-size: 38px !important; }
+.fs-39 { font-size: 39px !important; }
+.fs-40 { font-size: 40px !important; }
 
 /* برای تبلت و کوچکتر (max-width: 991px) */
 @media screen and (max-width: 991px) {
-    .fs-t-1 { font-size: 2px; }
-    .fs-t-2 { font-size: 3px; }
-    .fs-t-3 { font-size: 4px; }
-    .fs-t-4 { font-size: 5px; }
-    .fs-t-5 { font-size: 6px; }
-    .fs-t-6 { font-size: 7px; }
-    .fs-t-7 { font-size: 8px; }
-    .fs-t-8 { font-size: 9px; }
-    .fs-t-9 { font-size: 10px; }
-    .fs-t-10 { font-size: 11px; }
-    .fs-t-11 { font-size: 12px; }
-    .fs-t-12 { font-size: 13px; }
-    .fs-t-13 { font-size: 14px; }
-    .fs-t-14 { font-size: 15px; }
-    .fs-t-15 { font-size: 16px; }
-    .fs-t-16 { font-size: 17px; }
-    .fs-t-17 { font-size: 18px; }
-    .fs-t-18 { font-size: 19px; }
-    .fs-t-19 { font-size: 20px; }
-    .fs-t-20 { font-size: 21px; }
-    .fs-t-21 { font-size: 22px; }
-    .fs-t-22 { font-size: 23px; }
-    .fs-t-23 { font-size: 24px; }
-    .fs-t-24 { font-size: 25px; }
-    .fs-t-25 { font-size: 26px; }
-    .fs-t-26 { font-size: 27px; }
-    .fs-t-27 { font-size: 28px; }
-    .fs-t-28 { font-size: 29px; }
-    .fs-t-29 { font-size: 30px; }
-    .fs-t-30 { font-size: 31px; }
-    .fs-t-31 { font-size: 32px; }
-    .fs-t-32 { font-size: 33px; }
-    .fs-t-33 { font-size: 34px; }
-    .fs-t-34 { font-size: 35px; }
-    .fs-t-35 { font-size: 36px; }
-    .fs-t-36 { font-size: 37px; }
-    .fs-t-37 { font-size: 38px; }
-    .fs-t-38 { font-size: 39px; }
-    .fs-t-39 { font-size: 40px; }
-    .fs-t-40 { font-size: 41px; }
+    .fs-t-1 { font-size: 2px !important; }
+    .fs-t-2 { font-size: 3px !important; }
+    .fs-t-3 { font-size: 4px !important; }
+    .fs-t-4 { font-size: 5px !important; }
+    .fs-t-5 { font-size: 6px !important; }
+    .fs-t-6 { font-size: 7px !important; }
+    .fs-t-7 { font-size: 8px !important; }
+    .fs-t-8 { font-size: 9px !important; }
+    .fs-t-9 { font-size: 10px !important; }
+    .fs-t-10 { font-size: 11px !important; }
+    .fs-t-11 { font-size: 12px !important; }
+    .fs-t-12 { font-size: 13px !important; }
+    .fs-t-13 { font-size: 14px !important; }
+    .fs-t-14 { font-size: 15px !important; }
+    .fs-t-15 { font-size: 16px !important; }
+    .fs-t-16 { font-size: 17px !important; }
+    .fs-t-17 { font-size: 18px !important; }
+    .fs-t-18 { font-size: 19px !important; }
+    .fs-t-19 { font-size: 20px !important; }
+    .fs-t-20 { font-size: 21px !important; }
+    .fs-t-21 { font-size: 22px !important; }
+    .fs-t-22 { font-size: 23px !important; }
+    .fs-t-23 { font-size: 24px !important; }
+    .fs-t-24 { font-size: 25px !important; }
+    .fs-t-25 { font-size: 26px !important; }
+    .fs-t-26 { font-size: 27px !important; }
+    .fs-t-27 { font-size: 28px !important; }
+    .fs-t-28 { font-size: 29px !important; }
+    .fs-t-29 { font-size: 30px !important; }
+    .fs-t-30 { font-size: 31px !important; }
+    .fs-t-31 { font-size: 32px !important; }
+    .fs-t-32 { font-size: 33px !important; }
+    .fs-t-33 { font-size: 34px !important; }
+    .fs-t-34 { font-size: 35px !important; }
+    .fs-t-35 { font-size: 36px !important; }
+    .fs-t-36 { font-size: 37px !important; }
+    .fs-t-37 { font-size: 38px !important; }
+    .fs-t-38 { font-size: 39px !important; }
+    .fs-t-39 { font-size: 40px !important; }
+    .fs-t-40 { font-size: 41px !important; }
 }
 
 /* فقط برای موبایل (max-width: 600px) */
 @media screen and (max-width: 600px) {
-    .fs-m-1 { font-size: 3px; }
-    .fs-m-2 { font-size: 4px; }
-    .fs-m-3 { font-size: 5px; }
-    .fs-m-4 { font-size: 6px; }
-    .fs-m-5 { font-size: 7px; }
-    .fs-m-6 { font-size: 8px; }
-    .fs-m-7 { font-size: 9px; }
-    .fs-m-8 { font-size: 10px; }
-    .fs-m-9 { font-size: 11px; }
-    .fs-m-10 { font-size: 12px; }
-    .fs-m-11 { font-size: 13px; }
-    .fs-m-12 { font-size: 14px; }
-    .fs-m-13 { font-size: 15px; }
-    .fs-m-14 { font-size: 16px; }
-    .fs-m-15 { font-size: 17px; }
-    .fs-m-16 { font-size: 18px; }
-    .fs-m-17 { font-size: 19px; }
-    .fs-m-18 { font-size: 20px; }
-    .fs-m-19 { font-size: 21px; }
-    .fs-m-20 { font-size: 22px; }
-    .fs-m-21 { font-size: 23px; }
-    .fs-m-22 { font-size: 24px; }
-    .fs-m-23 { font-size: 25px; }
-    .fs-m-24 { font-size: 26px; }
-    .fs-m-25 { font-size: 27px; }
-    .fs-m-26 { font-size: 28px; }
-    .fs-m-27 { font-size: 29px; }
-    .fs-m-28 { font-size: 30px; }
-    .fs-m-29 { font-size: 31px; }
-    .fs-m-30 { font-size: 32px; }
-    .fs-m-31 { font-size: 33px; }
-    .fs-m-32 { font-size: 34px; }
-    .fs-m-33 { font-size: 35px; }
-    .fs-m-34 { font-size: 36px; }
-    .fs-m-35 { font-size: 37px; }
-    .fs-m-36 { font-size: 38px; }
-    .fs-m-37 { font-size: 39px; }
-    .fs-m-38 { font-size: 40px; }
-    .fs-m-39 { font-size: 41px; }
-    .fs-m-40 { font-size: 42px; }
+    .fs-m-1 { font-size: 3px !important; }
+    .fs-m-2 { font-size: 4px !important; }
+    .fs-m-3 { font-size: 5px !important; }
+    .fs-m-4 { font-size: 6px !important; }
+    .fs-m-5 { font-size: 7px !important; }
+    .fs-m-6 { font-size: 8px !important; }
+    .fs-m-7 { font-size: 9px !important; }
+    .fs-m-8 { font-size: 10px !important; }
+    .fs-m-9 { font-size: 11px !important; }
+    .fs-m-10 { font-size: 12px !important; }
+    .fs-m-11 { font-size: 13px !important; }
+    .fs-m-12 { font-size: 14px !important; }
+    .fs-m-13 { font-size: 15px !important; }
+    .fs-m-14 { font-size: 16px !important; }
+    .fs-m-15 { font-size: 17px !important; }
+    .fs-m-16 { font-size: 18px !important; }
+    .fs-m-17 { font-size: 19px !important; }
+    .fs-m-18 { font-size: 20px !important; }
+    .fs-m-19 { font-size: 21px !important; }
+    .fs-m-20 { font-size: 22px !important; }
+    .fs-m-21 { font-size: 23px !important; }
+    .fs-m-22 { font-size: 24px !important; }
+    .fs-m-23 { font-size: 25px !important; }
+    .fs-m-24 { font-size: 26px !important; }
+    .fs-m-25 { font-size: 27px !important; }
+    .fs-m-26 { font-size: 28px !important; }
+    .fs-m-27 { font-size: 29px !important; }
+    .fs-m-28 { font-size: 30px !important; }
+    .fs-m-29 { font-size: 31px !important; }
+    .fs-m-30 { font-size: 32px !important; }
+    .fs-m-31 { font-size: 33px !important; }
+    .fs-m-32 { font-size: 34px !important; }
+    .fs-m-33 { font-size: 35px !important; }
+    .fs-m-34 { font-size: 36px !important; }
+    .fs-m-35 { font-size: 37px !important; }
+    .fs-m-36 { font-size: 38px !important; }
+    .fs-m-37 { font-size: 39px !important; }
+    .fs-m-38 { font-size: 40px !important; }
+    .fs-m-39 { font-size: 41px !important; }
+    .fs-m-40 { font-size: 42px !important; }
 }
-
 
 
 /*   font weights    */

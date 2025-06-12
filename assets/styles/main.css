@@ -4,7 +4,9 @@
 .v-locale--is-ltr  {
     direction: rtl;
 }
-
+html {
+    font-family: 'IRANSans', sans-serif !important;
+}
 a {
     all: unset;
     text-decoration: none;
