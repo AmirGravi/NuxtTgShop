@@ -2,7 +2,7 @@
   <v-card
 
       :width="smAndDown ? '100%' : '400px' "
-      :height="smAndDown ? '100vh' : '600px' "
+      :height="smAndDown ? '100vh' : '500px' "
       :class="[smAndDown ?  'rounded-0' : 'rounded-lg']"
       class="d-flex flex-column justify-center align-center border-sm "
   >
@@ -124,6 +124,7 @@
 
     </v-window>
   </v-card>
+
 </template>
 
 <script setup>
@@ -133,6 +134,7 @@ import CeCustomLogin from './../../components/CE/custom-login.vue'
 import { useRouter } from 'vue-router';
 import { ref , onMounted, onUnmounted } from 'vue'
 import Abtn from "~/components/CE/abtn.vue";
+import {useAlert} from "~/stores/alert.js";
 
 const { $axios } = useNuxtApp()
 
@@ -147,9 +149,17 @@ const loading = ref(false)
 const userExists = ref(false)
 const { smAndDown } = useDisplay()
 const router = useRouter();
+const alertStore = useAlert();
 
+const count = ref(0)
+setInterval(() => {
+  for (let i = 0; i < 1; i++) {
+    alertStore.openAlert(1, `${count.value++} لطفا مجددا وارد شوید!` );
+  }
+}, 1000);
 
 function enterHandler(){
+
   if (loading.value) return
 
   switch(step.value){

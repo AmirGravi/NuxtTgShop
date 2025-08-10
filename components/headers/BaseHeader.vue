@@ -47,16 +47,16 @@
 
             <v-row class="h-100">
               <v-col class="d-flex  justify-center align-center">
-                <div v-if="Menumode === 'search'" class="text-white">
+                <div v-if="menuMode === 'search'" class="text-white">
                   searchhhhhhhhhhhhhhhhhhh
                 </div>
 
-                <div v-if="Menumode === 'menu'" class="text-white">
+                <div v-if="menuMode === 'menu'" class="text-white">
                   menuuuuuuuuuuuuuu
 
 
                 </div>
-                <div v-if="Menumode === 'cart'" class="text-white">
+                <div v-if="menuMode === 'cart'" class="text-white">
                   caaaaaaaaaaaaartttttttt
                 </div>
               </v-col>
@@ -204,14 +204,14 @@ function handleOpenMenu(mode) {
   console.log(mode)
   if (mode === 'search') {
     mobileMenuOpen.value = true;
-    Menumode.value = 'search'
+    menuMode.value = 'search'
   } else if (mode === 'menu') {
-    Menumode.value = 'menu'
+    menuMode.value = 'menu'
   } else if (mode === 'cart') {
-    Menumode.value = 'cart'
+    menuMode.value = 'cart'
     mobileMenuOpen.value = true;
   }
-  console.log(Menumode.value)
+  console.log(menuMode.value)
 }
 </script>
 

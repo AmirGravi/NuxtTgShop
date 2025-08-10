@@ -1,12 +1,17 @@
 <template>
   <v-app>
+    <Alert />
+
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </v-app>
 </template>
 
+<script setup lang="ts">
+import Alert from "~/components/CE/alert.vue";
 
+</script>
 
 
 <style>

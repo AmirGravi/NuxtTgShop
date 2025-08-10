@@ -12,8 +12,6 @@ export default defineNuxtConfig({
     '@/assets/styles/vuetify-custom.css',
     '@/assets/fonts/IranSans/fontiran.css',
     '@/assets/styles/font-style.css',
-
-
   ],
   build: {
     transpile: ['vuetify' ],
