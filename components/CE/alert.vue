@@ -8,18 +8,24 @@
         class="custom-snackbar"
         :class="item.mode"
     >
-      <span class="text">{{ item.text }}</span>
-      <div class="progress-bar"></div>
-      <button class="close-btn" @click="alertStore.closeAlert(item.id)">
-        <v-icon>mdi-close</v-icon>
-      </button>
+      <div class="d-flex justify-center">
+        <span class="fs-14">{{ item.text }}</span>
+        <button class="close-btn" @click="alertStore.closeAlert(item.id)">
+          <v-icon>mdi-close</v-icon>
+        </button>
+      </div>
+      <div
+          v-if="item.duration"
+          class="progress-bar"
+          :style="{ animationDuration: item.duration + 'ms' }"
+      ></div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-import {useAlert} from "~/stores/alert.js";
+import { useAlert } from "~/stores/alert.js";
 
 const alertStore = useAlert();
 const alerts = computed(() => alertStore.alerts);
@@ -32,7 +38,7 @@ function setRef(el, id) {
 }
 </script>
 
-<style scoped>
+<style >
 .alert-container {
   position: fixed;
   top: 20px;
@@ -46,7 +52,7 @@ function setRef(el, id) {
 
 .custom-snackbar {
   position: relative;
-  height: 40px;
+  height: 42px;
   display: flex;
   align-items: center;
   background-color: #323232;
@@ -61,23 +67,24 @@ function setRef(el, id) {
 }
 
 .custom-snackbar.success {
-  background-color: #00e676;
+  background-color: #4caf50; /* سبز */
 }
-.custom-snackbar.error {
-  background-color: #b00020;
+.custom-snackbar.info {
+  background-color: #2196f3; /* آبی */
 }
 .custom-snackbar.warning {
-  background-color: #ff9800;
+  background-color: #ff9800; /* نارنجی */
+}
+.custom-snackbar.error {
+  background-color: #f44336; /* قرمز */
 }
 
-.text {
-  font-size: 16px;
-}
+
 
 .close-btn {
   position: absolute;
-  top: 7px;
-  right: 8px;
+  top: 8px;
+  right: 10px;
   background: none;
   border: none;
   color: white;
@@ -86,11 +93,13 @@ function setRef(el, id) {
 
 .progress-bar {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   height: 4px;
   background-color: rgba(255, 255, 255, 0.7);
-  animation: progress-animation 3s linear forwards;
+  animation-name: progress-animation;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 @keyframes progress-animation {

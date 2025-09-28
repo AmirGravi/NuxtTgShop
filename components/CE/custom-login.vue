@@ -65,7 +65,6 @@ const onInput = (val) => {
 .login-input .v-field {
   direction: ltr !important;
   font-size: 16px;
-  color: #333;
 }
 
 

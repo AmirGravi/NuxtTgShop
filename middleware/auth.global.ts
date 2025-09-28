@@ -37,9 +37,11 @@ export default defineNuxtRouteMiddleware((to) => {
         console.error('خطا در دیکود توکن:', err)
         return navigateTo('/login')
     }
+    console.log(decoded.role)
 
     // اگر مسیر admin هست → بررسی role
     if (to.path.startsWith('/panel/admin')) {
+        console.log(decoded.role)
         if (decoded.role !== 'admin') {
             return navigateTo('/')
         }

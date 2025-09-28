@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-const ALERT_MODES = ["success", "warning", "error"] as const;
+const ALERT_MODES = ["success", "info", "warning", "error"] as const;
 
 type alertMode = typeof ALERT_MODES[number];
 
@@ -9,6 +9,8 @@ interface Alert {
     mode: alertMode;
     text: string;
     show: boolean;
+    duration: number | null;
+
 }
 
 export const useAlert = defineStore("AlertStore", {
@@ -17,7 +19,12 @@ export const useAlert = defineStore("AlertStore", {
     }),
 
     actions: {
-        openAlert(modeIndex: number, text: string, duration = 3000) {
+        openAlert(modeIndex: number, text: string, duration: number | null = 4000) {
+
+            if (this.alerts.length >= 3) {
+                this.shiftAlert(); // اولین رو حذف کن
+            }
+
             const id = Date.now() + Math.random();
             const mode = ALERT_MODES[modeIndex] || "success";
 
@@ -25,13 +32,16 @@ export const useAlert = defineStore("AlertStore", {
                 id,
                 mode,
                 text,
-                show: true
+                show: true,
+                duration
+
             });
 
-            setTimeout(() => {
-                // حذف اولین alert فقط اگر id همون id باشه
-                this.closeAlert(id);
-            }, duration);
+            if (duration && duration > 0) {
+                setTimeout(() => {
+                    this.closeAlert(id);
+                }, duration);
+            }
         },
 
         closeAlert(id:number) {

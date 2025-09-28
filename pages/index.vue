@@ -33,7 +33,6 @@
 
 
 
-
 <!--    <img width="100%"    data-aos="fade-down"-->
 <!--         data-aos-duration="2000"-->
 <!--src="/images/5e3949e6-6cd0-4f8b-92c3-7b6ad82ef8ed.png"         alt="">-->
@@ -69,42 +68,39 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {ref} from "vue";
 import useAuth from '../composable/useAuth.js'
-
-
+const { $axios } = useNuxtApp()
 const { hasRole, isLoggedIn } = useAuth()
 onMounted(async () => {
   console.log(isLoggedIn());
   console.log(hasRole('admin'));
-
+  await fetchProducts()
 })
 
-const productList = ref([
-  {
-    title: 'کفش ورزشی',
-    count: 12,
-    image: 'https://i.pinimg.com/736x/69/04/c3/6904c3d96a6bcc686610155ba635e139.jpg'
-  },
-  {
-    title: 'شلوار',
-    count: 18,
-    image: 'https://i.pinimg.com/736x/4e/dc/27/4edc274587ea392204c88f8ec332575b.jpg'
-  },
-  {
-    title: 'تاپ و زیر پیراهن',
-    count: 25,
-    image: 'https://i.pinimg.com/736x/b1/8f/d9/b18fd9833b27ce6ec13630598eb9a200.jpg'
-  },
-  {
-    title: 'تاپ و زیر پیراهن',
-    count: 25,
-    image: 'https://i.pinimg.com/736x/b1/8f/d9/b18fd9833b27ce6ec13630598eb9a200.jpg'
-  },  {
-    title: 'تاپ و زیر پیراهن',
-    count: 25,
-    image: 'https://i.pinimg.com/736x/b1/8f/d9/b18fd9833b27ce6ec13630598eb9a200.jpg'
-  },
-])
+const productList = ref([])
+const fetchProducts = async () => {
+  try {
+    const res = await $axios.get("/categories")
+    console.log(res.data)
+    productList.value = res.data.map(item => ({
+      title: item.name,
+      count: item.count , // یا هر چیزی که API برگردونه
+      image: "http://localhost:5000" + item.image
+    }));
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
 
+
+import { useTheme } from 'vuetify'
+import ModeToggle from "~/components/CE/ModeToggle.vue";
+
+const theme = useTheme()
+
+const toggleTheme = () => {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 
 onMounted(() => {
   AOS.init({

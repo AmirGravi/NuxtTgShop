@@ -1,5 +1,5 @@
 <template>
-  <v-footer  color="var(--primary-color)">
+  <v-footer  >
     <div class="text-center d-flex flex-column ga-2 py-4 w-100">
       <text-h3 class="fw-100 text-white my-3 fs-15">
         در ساعات اداری با ما تماس بگیرید - 09100000

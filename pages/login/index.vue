@@ -151,12 +151,6 @@ const { smAndDown } = useDisplay()
 const router = useRouter();
 const alertStore = useAlert();
 
-const count = ref(0)
-setInterval(() => {
-  for (let i = 0; i < 1; i++) {
-    alertStore.openAlert(1, `${count.value++} لطفا مجددا وارد شوید!` );
-  }
-}, 1000);
 
 function enterHandler(){
 
@@ -217,17 +211,21 @@ async function checkUser() {
   loading.value = true
   try {
     const response = await $axios.post('/check-user', { emailOrPhone: enterInput.value })
-    console.log(response)
     userExists.value = response.data.exists
 
     if (userExists.value) {
       step.value = 2
     } else {
+      alertStore.openAlert(0, response.data.message )
       step.value = 3
-
     }
   } catch (error) {
-    alert('خطا در ارتباط با سرور: ' + error.message)
+    if (error.response && error.response.data) {
+      alertStore.openAlert(2,  error.response.data.error )
+    } else {
+      alertStore.openAlert(1, "خطا در انجام عملیات")
+    }
+
   } finally {
     loading.value = false
   }
@@ -239,15 +237,17 @@ async function verifyCode() {
   try {
     const response = await $axios.post('/verifyCode', { code : entryCode.value , emailOrPhone: enterInput.value })
     if (response.data.success) {
-      alert('ورود موفق!')
-      // توکن یا ریدایرکت به صفحه بعد
       step.value = 4
-    } else {
-      alert('نام کاربری یا رمز اشتباه است')
     }
-  } catch (error) {
-    alert('خطا در ورود: ' + error.message)
-  } finally {
+  }
+  catch (error) {
+    if (error.response && error.response.data) {
+      alertStore.openAlert(3, error.response.data.message)
+    } else {
+      alertStore.openAlert(3, "خطا در انجام عملیات")
+    }
+  }
+  finally {
     loading.value = false
   }
 }
@@ -258,26 +258,22 @@ async function register() {
   try{
     const response = await $axios.post('/register', {  name : name.value , password : newPassword.value , emailOrPhone: enterInput.value })
     if (response.data) {
-      console.log("rs" , response.data)
-      alert('ورود موفق!')
-      // توکن یا ریدایرکت به صفحه بعد
       step.value = 4
-    } else {
-      alert('نام کاربری یا رمز اشتباه است')
     }
     if (response.data.token) {
-      // ذخیره توکن در localStorage یا cookie
       localStorage.setItem('token', response.data.token);
-
-      alert('ثبت‌نام موفق!');
-
+      alertStore.openAlert(0,   'ثبت نام با موفقیت انجام شد ' , 2000)
       router.push('/');
-    } else {
-      alert('ثبت‌نام ناموفق');
     }
-  }catch (error) {
-    alert('خطا در ثبت‌نام: ' + error.message);
-  } finally {
+  }
+  catch (error) {
+    if (error.response && error.response.data) {
+      alertStore.openAlert(3, error.response.data.message)
+    } else {
+      alertStore.openAlert(3, "خطا در انجام عملیات")
+    }
+  }
+  finally {
     loading.value = false;
   }
 }
@@ -292,10 +288,7 @@ async function login() {
   try {
     const response = await $axios.post('/login', { email: enterInput.value, password: password.value })
     if (response.data.success) {
-      alert('ورود موفق!')
-      // توکن یا ریدایرکت به صفحه بعد
-    } else {
-      alert('نام کاربری یا رمز اشتباه است')
+      alertStore.openAlert(0,  'ورود با موفقیت انجام شد' , 2000)
     }
     if (response.data.token) {
       // ذخیره توکن در localStorage یا cookie
@@ -303,7 +296,12 @@ async function login() {
     }
     router.push('/');
     } catch (error) {
-    alert('خطا در ورود: ' + error.message)
+    if (error.response && error.response.data) {
+      alertStore.openAlert(3,  error.response.data.message )
+    } else {
+      alertStore.openAlert(3, "خطا در انجام عملیات")
+    }
+
   } finally {
     loading.value = false
   }

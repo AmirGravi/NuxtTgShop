@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app >
     <Alert />
 
     <NuxtLayout>
@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import Alert from "~/components/CE/alert.vue";
+
 
 </script>
 

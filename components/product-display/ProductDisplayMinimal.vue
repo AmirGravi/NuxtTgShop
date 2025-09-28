@@ -10,7 +10,7 @@
       >
         <v-hover v-slot="{ isHovering, props }">
           <v-card
-              height="650"
+              height="550"
               v-bind="props"
               class="overflow-hidden position-relative rounded-0"
               @mouseenter="isHovering = true"
@@ -27,17 +27,25 @@
 
             <!-- Text below the image -->
             <div
-                class="position-absolute text-white px-2 py-1 d-flex flex-column desktop-text-css"
-                :style="{ minHeight: isHovering ? '110px' : '50px' }"
+                class="position-absolute desktop-text-css px-2 py-1"
+                :style="{
+                 minHeight: isHovering ? '115px' : '70px',
+                 maxHeight: isHovering ? '115px' : '70px'
+            }"
             >
-              <text-h1 class="fs-22 pb-2 fw-200 " style="color:#615c5c;">
+              <div class="bg-surface fs-18  fw-200  d-inline-block px-2 py-1 mb-2  rounded">
                 {{ category.title }}
-              </text-h1>
+              </div>
 
-              <div class="fs-17 fw-200 " style="color:#615c5c;" :class="{ 'visible': isHovering }">
+
+              <div class="  fs-17 fw-200 mt-1" :class="{ 'visible': isHovering }">
+                <span class="bg-surface px-2 py-1  rounded">
                 {{ category.count }} محصول
+
+                </span>
               </div>
             </div>
+
           </v-card>
         </v-hover>
       </v-col>
@@ -63,12 +71,16 @@
 </template>
 
 <script setup>
+import { useTheme } from 'vuetify'
+
 defineProps({
   products: {
     type: Array,
     required: true
   }
 })
+const theme = useTheme()
+
 
 const isHovering = ref(false)
 </script>
