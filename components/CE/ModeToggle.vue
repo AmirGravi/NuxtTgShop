@@ -61,7 +61,6 @@ defineProps({
 
 const theme = useTheme();
 const isDark = ref(false);
-
 // Initialize theme from localStorage or system preference
 onMounted(() => {
   try {

@@ -15,6 +15,7 @@
               class="overflow-hidden position-relative rounded-0"
               @mouseenter="isHovering = true"
               @mouseleave="isHovering = false"
+              @click="navigateCategory(category)"
           >
             <!-- Image with zoom effect -->
             <v-img
@@ -57,6 +58,7 @@
           v-for="(category, index) in products"
           :key="index"
           class="d-flex flex-column"
+          @click="navigateCategory(category)"
           style="min-width: 200px"
       >
         <v-img :src="category.image" height="300" cover></v-img>
@@ -72,13 +74,26 @@
 
 <script setup>
 import { useTheme } from 'vuetify'
-
-defineProps({
+const { to, products } = defineProps({
   products: {
     type: Array,
     required: true
+  },
+  to: {
+    type: String,
+    default: '#'
   }
 })
+const navigateCategory = (category) => {
+// اطمینان از وجود _id یا slug
+  const pathSegment = category.id || category.slug
+  console.log(category)
+  if (!pathSegment) {
+    console.error('No valid _id, slug, or index provided for navigation')
+    return
+  }
+  navigateTo(`${to}/${pathSegment}`)
+}
 const theme = useTheme()
 
 

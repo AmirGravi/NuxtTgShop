@@ -117,7 +117,7 @@
                 <template #activator="{ props }">
                   <router-link :to="hasLogin ?  '/profile' : '/login'  ">
 
-                  <v-icon  v-bind="props">mdi-account-circle</v-icon>
+                    <v-icon  v-bind="props">mdi-account-circle</v-icon>
                   </router-link>
                 </template>
                 <span>پروفایل</span>
@@ -167,7 +167,6 @@ import {ref, onMounted, onBeforeUnmount} from 'vue'
 import {useDisplay} from "vuetify";
 import useAuth from "~/composable/useAuth.js";
 
-
 const {mdAndUp, smAndDown} = useDisplay()
 const mobileMenuOpen = ref(null)
 const menuMode = ref('');
@@ -177,6 +176,8 @@ import {useTheme} from "vuetify";
 import ModeToggle from "~/components/CE/ModeToggle.vue";
 
 const theme = useTheme();
+console.log("gtheme" ,theme.global.current)
+
 const categories = ref([
   {
     title: 'کفش ورزشی',
