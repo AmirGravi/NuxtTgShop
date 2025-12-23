@@ -95,7 +95,7 @@ const fetchProducts = async () => {
 
 
 import { useTheme } from 'vuetify'
-import ModeToggle from "~/components/CE/ModeToggle.vue";
+import ModeToggle from '@/components/CE/ModeToggle.vue';
 
 const theme = useTheme()
 

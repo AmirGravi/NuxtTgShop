@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ModeToggle from '@/components/ModeToggle.vue';
+import ModeToggle from '@/components/CE/ModeToggle.vue';
 
 const drawer = ref(true);
 const mini = ref(false);

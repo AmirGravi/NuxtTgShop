@@ -173,7 +173,7 @@ const menuMode = ref('');
 const { hasRole, isLoggedIn } = useAuth()
 const hasLogin = computed(() => isLoggedIn())
 import {useTheme} from "vuetify";
-import ModeToggle from "~/components/CE/ModeToggle.vue";
+import ModeToggle from '@/components/CE/ModeToggle.vue';
 
 const theme = useTheme();
 console.log("gtheme" ,theme.global.current)
