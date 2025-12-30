@@ -12,7 +12,7 @@ interface DecodedToken {
 export default defineNuxtRouteMiddleware((to) => {
 
 
-    const publicPages = ['/', '/login', '/error']
+    const publicPages = ['/' , '/about', '/login', '/error']
 
     if (useNuxtApp().server) return
 

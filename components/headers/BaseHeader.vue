@@ -146,7 +146,7 @@
 
             <ModeToggle as-switch class="ml-2" />
 
-            <v-icon color="white" :size="appBarHeight === 70 ? 58 : 45">mdi-fire</v-icon>
+            <v-icon color="white" size="45">mdi-fire</v-icon>
 
           </div>
 

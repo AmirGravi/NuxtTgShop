@@ -4,17 +4,16 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import 'vuetify/styles'
 
-import { useThemeLoader } from '@/composable/useThemeLoader'
-
-export default defineNuxtPlugin(nuxtApp => {
-    const { currentTheme } = useThemeLoader()
-
+export default defineNuxtPlugin((nuxtApp) => {
     const vuetify = createVuetify({
         components,
         directives,
         theme: {
             defaultTheme: 'light',
-            themes: currentTheme.value.vuetifyThemes,
+            themes: {
+                light: {},
+                dark: {},
+            },
         },
     })
 

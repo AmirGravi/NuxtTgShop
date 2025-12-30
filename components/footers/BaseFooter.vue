@@ -1,13 +1,13 @@
 <template>
   <v-footer  >
     <div class="text-center d-flex flex-column ga-2 py-4 w-100">
-      <text-h3 class="fw-100 text-white my-3 fs-15">
+      <h3 class="fw-100 text-white my-3 fs-15">
         در ساعات اداری با ما تماس بگیرید - 09100000
-      </text-h3>
+      </h3>
 
       <div class="d-flex flex-column flex-md-row justify-center ga-10 py-2">
         <router-link v-for="(page, index) in pages" :key="index" :to="page.path">
-          <text-h2 class="text-white fw-200 fs-15">{{ page.name }}</text-h2>
+          <h2 class="text-white fw-200 fs-15">{{ page.name }}</h2>
         </router-link>
       </div>
 
@@ -24,9 +24,9 @@
 
       <v-divider class="my-2" thickness="2" width="100%" color="white"></v-divider>
 
-      <text-h2 class="text-white fw-200 fs-15">
+      <h2 class="text-white fw-200 fs-15">
         کلیه حقوق این سایت متعلق به «TG-Project» است.
-      </text-h2>
+      </h2>
     </div>
   </v-footer>
 </template>

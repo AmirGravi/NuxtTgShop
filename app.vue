@@ -2,7 +2,7 @@
   <v-app >
     <Alert />
 
-    <NuxtLayout>
+    <NuxtLayout  :name="layoutName">
       <NuxtPage />
     </NuxtLayout>
   </v-app>
@@ -10,7 +10,14 @@
 
 <script setup lang="ts">
 import Alert from "~/components/CE/alert.vue";
+import { useThemeStore } from '~/stores/theme'
 
+const themeStore = useThemeStore()
+await themeStore.loadFromServer()
+
+const layoutName = computed(() => {
+  return themeStore.config.layouts.default
+})
 
 </script>
 
