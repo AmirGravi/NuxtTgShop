@@ -1,13 +1,13 @@
 <template>
   <v-footer  >
     <div class="text-center d-flex flex-column ga-2 py-4 w-100">
-      <text-h3 class="fw-100  my-3 fs-15">
+      <h3 class="fw-100  my-3 fs-15">
         در ساعات اداری با ما تماس بگیرید - 09100000
-      </text-h3>
+      </h3>
 
       <div class="d-flex flex-column flex-md-row justify-center ga-10 py-2">
         <router-link v-for="(page, index) in pages" :key="index" :to="page.path">
-          <text-h2 class=" fw-200 fs-15">{{ page.name }}</text-h2>
+          <h2 class=" fw-200 fs-15">{{ page.name }}</h2>
         </router-link>
       </div>
 
@@ -23,9 +23,9 @@
 
       <v-divider class="my-2" thickness="2" width="100%" ></v-divider>
 
-      <text-h2 class=" fw-200 fs-15">
+      <h2 class=" fw-200 fs-15">
         کلیه حقوق این سایت متعلق به «TG-Project» است.
-      </text-h2>
+      </h2>
     </div>
   </v-footer>
 </template>
@@ -38,10 +38,10 @@ const icons = [
   'mdi-instagram',
 ]
 const pages = [
-  { name: 'درباره ما', path: '/home' },
+  // { name: 'درباره ما', path: '/home' },
   { name: 'قوانین سایت', path: '/about' },
-  { name: 'شرایط تعویض و بازگشت کالا', path: '/contact' },
+  // { name: 'شرایط تعویض و بازگشت کالا', path: '/contact' },
   { name: 'تماس باما', path: '/about' },
-  { name: 'پشتیبانی', path: '/contact' }
+  // { name: 'پشتیبانی', path: '/contact' }
 ]
 </script>

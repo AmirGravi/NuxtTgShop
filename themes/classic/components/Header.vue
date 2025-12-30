@@ -1,10 +1,9 @@
 <template>
 
   <template v-if="smAndDown">
-    <v-app-bar  :height="48" app class="px-2"  color="background" dark>
+    <v-app-bar  :height="48" app class="px-2"   color="surface"  >
       <div class="d-flex align-center justify-space-between px-1 w-100">
         <!--        <img src="/images/NgstAb01.svg" >mdi-home</img>-->
-
         <!-- منو موبایل -->
         <div class=" d-flex align-center ">
           <!--        hamberger-->
@@ -88,8 +87,6 @@
         :height="computedHeight"
         app
         class="px-2"
-        color="background"
-        dark
         @mouseenter="isHovering = true"
         @mouseleave="isHovering = false"
     >
@@ -146,7 +143,7 @@
 
             <ModeToggle as-switch class="ml-2" />
 
-            <v-icon color="white" :size="appBarHeight === 70 ? 58 : 45">mdi-fire</v-icon>
+            <v-icon color="white" size="45">mdi-fire</v-icon>
 
           </div>
 
@@ -165,7 +162,7 @@
 import {ref, onMounted, onBeforeUnmount} from 'vue'
 
 import {useDisplay} from "vuetify";
-import useAuth from "~/composable/useAuth.js";
+import useAuth from "~/composable/useAuth.ts";
 
 const {mdAndUp, smAndDown} = useDisplay()
 const mobileMenuOpen = ref(null)
@@ -173,10 +170,10 @@ const menuMode = ref('');
 const { hasRole, isLoggedIn } = useAuth()
 const hasLogin = computed(() => isLoggedIn())
 import {useTheme} from "vuetify";
-import ModeToggle from '@/components/CE/ModeToggle.vue';
+import ModeToggle from '~/components/CE/ModeToggle.vue';
 
 const theme = useTheme();
-console.log("gtheme" ,theme.global.current)
+console.log("gtheme" ,theme.global.name.value)
 
 const categories = ref([
   {
