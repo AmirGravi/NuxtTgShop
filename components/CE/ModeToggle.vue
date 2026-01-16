@@ -41,7 +41,6 @@
           <span class="sr-only">Toggle theme</span>
         </v-btn>
       </template>
-
       <v-list class="dropdown-menu">
         <v-list-item @click="setTheme('light')">Light</v-list-item>
         <v-list-item @click="setTheme('dark')">Dark</v-list-item>
@@ -61,43 +60,47 @@ defineProps({
 
 const theme = useTheme();
 const isDark = ref(false);
-// Initialize theme from localStorage or system preference
+
+const themeCookie = useCookie('app-theme', {
+  default: () => 'system',
+  watch: true,
+  maxAge: 60 * 60 * 24 * 90
+});
+
+const getSystemTheme = () => {
+  if (import.meta.client) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
+};
+
+const applyTheme = (mode) => {
+  let targetTheme = 'light';
+
+  if (mode === 'system') {
+    targetTheme = getSystemTheme();
+  } else {
+    targetTheme = mode;
+  }
+
+  theme.global.name.value = targetTheme;
+  isDark.value = targetTheme === 'dark';
+};
+
 onMounted(() => {
   try {
-    // Check if theme.global exists and is properly initialized
-    if (!theme?.global?.name || !theme?.global?.current) {
-      console.error("Vuetify theme is not properly initialized");
-      isDark.value = false;
-      return;
+    const savedTheme = themeCookie.value || 'system';
+    applyTheme(savedTheme);
+
+    if (import.meta.client && savedTheme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', (e) => {
+        if (themeCookie.value === 'system') {
+          applyTheme('system');
+        }
+      });
     }
 
-    // Load theme from localStorage or set default
-    const savedTheme = localStorage.getItem('app-theme') || 'system';
-
-    if (savedTheme === 'system') {
-      // Use system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      isDark.value = prefersDark;
-      theme.global.name.value = prefersDark ? 'dark' : 'light';
-    } else {
-      // Use saved theme
-      theme.global.name.value = savedTheme;
-      isDark.value = savedTheme === 'dark';
-    }
-
-    // Sync isDark with Vuetify's theme
-    isDark.value = theme.global.current.value.dark;
-
-    // Watch for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', (e) => {
-      if (localStorage.getItem('app-theme') === 'system') {
-        isDark.value = e.matches;
-        theme.global.name.value = e.matches ? 'dark' : 'light';
-      }
-    });
-
-    // Watch for Vuetify theme changes
     watch(
         () => theme.global.current.value.dark,
         (val) => {
@@ -106,18 +109,14 @@ onMounted(() => {
     );
   } catch (error) {
     console.error('Error initializing theme:', error);
-    // Fallback to light theme
-    theme.global.name.value = 'light';
-    isDark.value = false;
+    applyTheme('light');
   }
 });
 
 function toggleTheme() {
   try {
     const next = isDark.value ? 'light' : 'dark';
-    isDark.value = !isDark.value;
-    theme.global.name.value = next;
-    localStorage.setItem('app-theme', next);
+    setTheme(next);
   } catch (error) {
     console.error('Error toggling theme:', error);
   }
@@ -125,16 +124,9 @@ function toggleTheme() {
 
 function setTheme(mode) {
   try {
-    if (mode === 'system') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      isDark.value = prefersDark;
-      theme.global.name.value = prefersDark ? 'dark' : 'light';
-      localStorage.setItem('app-theme', 'system');
-    } else {
-      theme.global.name.value = mode;
-      isDark.value = mode === 'dark';
-      localStorage.setItem('app-theme', mode);
-    }
+    themeCookie.value = mode;
+
+    applyTheme(mode);
   } catch (error) {
     console.error('Error setting theme:', error);
   }
@@ -142,7 +134,6 @@ function setTheme(mode) {
 </script>
 
 <style scoped>
-/* استایل سوئیچر */
 .switch {
   font-size: 13px;
   position: relative;
@@ -152,13 +143,11 @@ function setTheme(mode) {
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -171,7 +160,6 @@ function setTheme(mode) {
   border-radius: 30px;
   overflow: hidden;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -184,16 +172,13 @@ function setTheme(mode) {
   transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
   box-shadow: inset 8px -4px 0px 0px #fff;
 }
-
 .switch input:checked + .slider {
   background-color: #00a6ff;
 }
-
 .switch input:checked + .slider:before {
   transform: translateX(1.8em);
   box-shadow: inset 15px -4px 0px 15px #ffcf48;
 }
-
 .star {
   background-color: #fff;
   border-radius: 50%;
@@ -202,26 +187,21 @@ function setTheme(mode) {
   height: 5px;
   transition: all 0.4s;
 }
-
 .star_1 {
   left: 2.5em;
   top: 0.5em;
 }
-
 .star_2 {
   left: 2.2em;
   top: 1.2em;
 }
-
 .star_3 {
   left: 3em;
   top: 0.9em;
 }
-
 .switch input:checked ~ .slider .star {
   opacity: 0;
 }
-
 .cloud {
   width: 3.5em;
   position: absolute;
@@ -230,12 +210,10 @@ function setTheme(mode) {
   opacity: 0;
   transition: all 0.4s;
 }
-
 .switch input:checked ~ .slider .cloud {
   opacity: 1;
 }
 
-/* دراپ‌داون */
 .dropdown-menu {
   direction: rtl;
   background-color: #ffffff;

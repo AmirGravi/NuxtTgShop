@@ -1,6 +1,7 @@
 // useAuth.ts
 import { ref } from 'vue'
 import { jwtDecode } from 'jwt-decode'
+import { useCookie } from '#imports'
 
 interface DecodedToken {
     userId: string
@@ -11,7 +12,7 @@ interface DecodedToken {
 }
 
 export default function useAuth() {
-    const token = ref<string | null>(localStorage.getItem('token'))
+    const token = useCookie('token')
     const user = ref<DecodedToken | null>(null)
 
     const decodeToken = () => {
@@ -34,7 +35,6 @@ export default function useAuth() {
     }
 
     const logout = () => {
-        localStorage.removeItem('token')
         token.value = null
         user.value = null
     }

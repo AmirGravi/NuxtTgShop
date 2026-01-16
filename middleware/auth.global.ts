@@ -1,5 +1,6 @@
 import { useNuxtApp } from '#app'
 import { jwtDecode } from 'jwt-decode'
+// import { useCookie } from '#imports'
 
 
 interface DecodedToken {
@@ -16,28 +17,29 @@ export default defineNuxtRouteMiddleware((to) => {
 
     if (useNuxtApp().server) return
 
-    const token = localStorage.getItem('token')
+    const token = useCookie('token')
+    console.log('t' , token.value)
 
     // لاگین کرده؟ → نذار بره به صفحه لاگین
-    if (token && ['/login'].includes(to.path)) {
+    if (token.value && ['/login'].includes(to.path)) {
         return navigateTo('/dashboard')
     }
 
     // صفحه عمومی → مشکلی نیست
     if (publicPages.includes(to.path)) return
 
-    if (!token) {
+    if (!token.value) {
         return navigateTo('/')
     }
 
     let decoded: DecodedToken
     try {
-        decoded = jwtDecode<DecodedToken>(token)
+        decoded = jwtDecode<DecodedToken>(token.value)
     } catch (err) {
         console.error('خطا در دیکود توکن:', err)
         return navigateTo('/login')
     }
-    console.log(decoded.role)
+    console.log('rws' ,decoded.role)
 
     // اگر مسیر admin هست → بررسی role
     if (to.path.startsWith('/panel/admin')) {
