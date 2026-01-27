@@ -4,6 +4,7 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import 'vuetify/styles'
 import { themes } from '~/themes/index'
+import adminTheme from '~/themes/admin/vuetify'
 
 export default defineNuxtPlugin((nuxtApp) => {
     const themeMap: any = themes
@@ -24,12 +25,13 @@ export default defineNuxtPlugin((nuxtApp) => {
         theme: {
             defaultTheme: initialTheme,
             themes: {
-                light: {
-                    ...activeThemeConfig.light,
-                },
-                dark: {
-                    ...activeThemeConfig.dark,
-                },
+                // ✅ فروشگاه همون قبلی، دست نخورده
+                light: { ...activeThemeConfig.light },
+                dark: { ...activeThemeConfig.dark },
+
+                // ✅ فقط تم‌های ادمین اضافه می‌شن
+                adminLight: { ...adminTheme.light },
+                adminDark: { ...adminTheme.dark },
             },
         },
     })
