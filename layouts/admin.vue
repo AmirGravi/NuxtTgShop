@@ -1,7 +1,6 @@
 <template>
   <client-only>
 
-  <v-app>
     <v-theme-provider :theme="adminThemeName" with-background>
 
     <v-navigation-drawer v-model="drawer" :rail="mini"
@@ -116,7 +115,6 @@
       </v-container>
     </v-main>
     </v-theme-provider>
-  </v-app>
 
   </client-only>
 
@@ -129,14 +127,9 @@ import ModeToggle from '~/components/CE/ModeToggle.vue';
 
 const route = useRoute()
 
-const modeCookie = useCookie<'light' | 'dark' | 'system'>("admin-theme-mode", { default: () => "system" });
+const modeCookie = useCookie<'light' | 'dark'>("admin-theme-mode", { default: () => "light" })
+const adminThemeName = computed(() => (modeCookie.value === "dark" ? "adminDark" : "adminLight"))
 
-const getSystemTheme = () =>
-    import.meta.client && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-const resolvedMode = computed(() => (modeCookie.value === "system" ? getSystemTheme() : modeCookie.value));
-
-const adminThemeName = computed(() => (resolvedMode.value === "dark" ? "adminDark" : "adminLight"));
 
 const isItemActive = (item: any) => {
   if (item.to && route.path === item.to) return true
