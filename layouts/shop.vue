@@ -1,11 +1,9 @@
 <template>
-  <v-app>
     <v-theme-provider :theme="shopThemeName" with-background>
         <component :is="activeThemeLayout">
           <slot />
         </component>
     </v-theme-provider>
-  </v-app>
 </template>
 
 <script setup lang="ts">
@@ -22,12 +20,11 @@ const activeThemeLayout = computed(() => {
   )
 })
 
-const modeCookie = useCookie<'light' | 'dark' | 'system'>("shop-theme-mode", { default: () => "system" });
+const modeCookie = useCookie<'light' | 'dark'>("shop-theme-mode", {
+  default: () => "light"
+})
 
-const getSystemTheme = () =>
-    import.meta.client && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+const shopThemeName = computed(() => (modeCookie.value === "dark" ? "dark" : "light"))
 
-const resolvedMode = computed(() => (modeCookie.value === "system" ? getSystemTheme() : modeCookie.value));
 
-const shopThemeName = computed(() => (resolvedMode.value === "dark" ? "dark" : "light"));
 </script>

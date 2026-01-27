@@ -1,12 +1,10 @@
 <template>
 
-  <v-app>
     <ClassicHeader />
     <v-main>
       <slot />
     </v-main>
     <ClassicFooter />
-  </v-app>
 
 </template>
 

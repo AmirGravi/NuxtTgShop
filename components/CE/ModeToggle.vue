@@ -44,7 +44,6 @@
       <v-list class="dropdown-menu">
         <v-list-item @click="setTheme('light')">Light</v-list-item>
         <v-list-item @click="setTheme('dark')">Dark</v-list-item>
-        <v-list-item @click="setTheme('system')">System</v-list-item>
       </v-list>
     </v-menu>
   </div>
@@ -68,43 +67,27 @@ const cookieName = computed(() =>
     props.scope === "admin" ? "admin-theme-mode" : "shop-theme-mode"
 );
 
+// ✅ فقط light/dark
 const modeCookie = useCookie(cookieName.value, {
-  default: () => "system",
+  default: () => "light",
   watch: true,
   maxAge: 60 * 60 * 24 * 90,
 });
 
-const getSystemTheme = () => {
-  if (import.meta.client) {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  return "light";
-};
-
-const resolveMode = (mode) => (mode === "system" ? getSystemTheme() : mode);
-
 onMounted(() => {
-  isDark.value = resolveMode(modeCookie.value) === "dark";
-
-  if (import.meta.client) {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    mq.addEventListener("change", () => {
-      if (modeCookie.value === "system") {
-        isDark.value = resolveMode("system") === "dark";
-      }
-    });
-  }
+  isDark.value = modeCookie.value === "dark";
 });
 
 function setTheme(mode) {
-  modeCookie.value = mode;
-  isDark.value = resolveMode(mode) === "dark";
+  modeCookie.value = mode;            // "light" | "dark"
+  isDark.value = mode === "dark";
 }
 
 function toggleTheme() {
   setTheme(isDark.value ? "light" : "dark");
 }
 </script>
+
 
 <style scoped>
 .switch {
