@@ -51,85 +51,58 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from "vue";
-import { useTheme } from "vuetify";
+import { ref, computed, onMounted } from "vue";
 
-defineProps({
+const props = defineProps({
   asSwitch: { type: Boolean, default: false },
+  scope: {
+    type: String,
+    default: "shop",
+    validator: (v) => ["shop", "admin"].includes(v),
+  },
 });
 
-const theme = useTheme();
 const isDark = ref(false);
 
-const themeCookie = useCookie('app-theme', {
-  default: () => 'system',
+const cookieName = computed(() =>
+    props.scope === "admin" ? "admin-theme-mode" : "shop-theme-mode"
+);
+
+const modeCookie = useCookie(cookieName.value, {
+  default: () => "system",
   watch: true,
-  maxAge: 60 * 60 * 24 * 90
+  maxAge: 60 * 60 * 24 * 90,
 });
 
 const getSystemTheme = () => {
   if (import.meta.client) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
-  return 'light';
+  return "light";
 };
 
-const applyTheme = (mode) => {
-  let targetTheme = 'light';
-
-  if (mode === 'system') {
-    targetTheme = getSystemTheme();
-  } else {
-    targetTheme = mode;
-  }
-
-  theme.global.name.value = targetTheme;
-  isDark.value = targetTheme === 'dark';
-};
+const resolveMode = (mode) => (mode === "system" ? getSystemTheme() : mode);
 
 onMounted(() => {
-  try {
-    const savedTheme = themeCookie.value || 'system';
-    applyTheme(savedTheme);
+  isDark.value = resolveMode(modeCookie.value) === "dark";
 
-    if (import.meta.client && savedTheme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
-        if (themeCookie.value === 'system') {
-          applyTheme('system');
-        }
-      });
-    }
-
-    watch(
-        () => theme.global.current.value.dark,
-        (val) => {
-          isDark.value = val;
-        }
-    );
-  } catch (error) {
-    console.error('Error initializing theme:', error);
-    applyTheme('light');
+  if (import.meta.client) {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", () => {
+      if (modeCookie.value === "system") {
+        isDark.value = resolveMode("system") === "dark";
+      }
+    });
   }
 });
 
-function toggleTheme() {
-  try {
-    const next = isDark.value ? 'light' : 'dark';
-    setTheme(next);
-  } catch (error) {
-    console.error('Error toggling theme:', error);
-  }
+function setTheme(mode) {
+  modeCookie.value = mode;
+  isDark.value = resolveMode(mode) === "dark";
 }
 
-function setTheme(mode) {
-  try {
-    themeCookie.value = mode;
-
-    applyTheme(mode);
-  } catch (error) {
-    console.error('Error setting theme:', error);
-  }
+function toggleTheme() {
+  setTheme(isDark.value ? "light" : "dark");
 }
 </script>
 

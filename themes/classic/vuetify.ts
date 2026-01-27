@@ -15,6 +15,7 @@ export default {
                 info: '#2196f3',
                 success: '#4caf50',
                 warning: '#ff9800',
+                adminPrimary:'#0558f1'
             },
         },
         dark: {
@@ -30,6 +31,7 @@ export default {
                 info: '#64b5f6',
                 success: '#81c784',
                 warning: '#ffb74d',
+                adminPrimary:'#42a0ed'
             },
         },
     },

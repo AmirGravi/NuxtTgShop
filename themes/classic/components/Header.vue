@@ -59,7 +59,7 @@
 
           <div class="d-flex align-center">
 
-            <ModeToggle as-switch class="ml-2" />
+            <ModeToggle as-switch scope="shop" class="ml-2" />
 
             <v-icon color="white" size="45">mdi-fire</v-icon>
 
