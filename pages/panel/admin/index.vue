@@ -1,11 +1,11 @@
 <template>
-  <div>
-    salan
-  </div>
+  <v-row >
+    <v-col>
+      در حال توسعه
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>
-definePageMeta({
-  layout: 'admin' // این مشخص می‌کنه از AdminLayout استفاده کنه
-})
+
 </script>

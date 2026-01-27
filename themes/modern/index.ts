@@ -1,7 +1,7 @@
 import vuetify from './vuetify'
 
 export default {
-    name: 'classic',
+    name: 'modern',
     layouts: {
         default: 'default',
     },

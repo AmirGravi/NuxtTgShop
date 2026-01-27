@@ -152,6 +152,13 @@ const router = useRouter();
 const alertStore = useAlert();
 
 
+const tokenCookie = useCookie('token', {
+  watch: true,
+  maxAge: 60 * 60 * 24 * 90 ,
+//   90 Days
+})
+
+
 function enterHandler(){
 
   if (loading.value) return
@@ -261,7 +268,7 @@ async function register() {
       step.value = 4
     }
     if (response.data.token) {
-      localStorage.setItem('token', response.data.token);
+      tokenCookie.value = response.data.token;
       alertStore.openAlert(0,   'ثبت نام با موفقیت انجام شد ' , 2000)
       router.push('/');
     }
@@ -291,8 +298,7 @@ async function login() {
       alertStore.openAlert(0,  'ورود با موفقیت انجام شد' , 2000)
     }
     if (response.data.token) {
-      // ذخیره توکن در localStorage یا cookie
-      localStorage.setItem('token', response.data.token);
+      tokenCookie.value = response.data.token;
     }
     router.push('/');
     } catch (error) {

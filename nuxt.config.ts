@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
   components: true,
-  ssr: false,
+  ssr: true,
   css: [
     'vuetify/styles',
     '@mdi/font/css/materialdesignicons.css',
@@ -21,12 +21,11 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css'
+          // href: 'https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css'
         },
         {
           rel: 'stylesheet' ,
-          href: 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'
-
+          // href: 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'
         }
       ]
     }

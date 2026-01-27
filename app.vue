@@ -1,38 +1,40 @@
 <template>
-  <v-app >
+  <v-app>
     <Alert />
-
-    <NuxtLayout  :name="layoutName">
-      <NuxtPage />
-    </NuxtLayout>
+        <NuxtLayout :name="layoutName">
+          <NuxtPage />
+        </NuxtLayout>
   </v-app>
 </template>
 
 <script setup lang="ts">
-import Alert from "~/components/CE/alert.vue";
+import Alert from '~/components/CE/alert.vue'
 import { useThemeStore } from '~/stores/theme'
+const { $axios } = useNuxtApp()
 
+const route = useRoute()
 const themeStore = useThemeStore()
-await themeStore.loadFromServer()
+
+let activeThemeName
+
+try {
+  const res = await $axios.get('/theme')
+  activeThemeName = res.data.theme || 'classic'
+} catch (error) {
+  console.error('Failed to fetch theme, using classic')
+  activeThemeName = 'classic'
+}
+const themeCookie = useCookie('selected-theme', {
+  default: () => 'classic',
+  maxAge: 60 * 60 * 24 * 365
+})
+themeCookie.value = activeThemeName
+
+await themeStore.loadThemeModule(activeThemeName)
 
 const layoutName = computed(() => {
-  return themeStore.config.layouts.default
+  if (route.path.startsWith('/panel/admin')) return 'admin'
+  if (route.meta.layout) return route.meta.layout
+  return 'shop'
 })
-
 </script>
-
-
-<style>
-:root {
-  --primary-color: #153448;
-  --secondary-color: #3C5B6F;
-  --text-color: #948979;
-  --background-color: #DFD0B8;
-  --black: #000000;
-  --white: #FFFFFF;
-  --danger-color: #e53935;
-}
-:root-fontsize {
-  font-family: vazirmatn;
-}
-</style>

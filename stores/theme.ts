@@ -6,17 +6,10 @@ export const useThemeStore = defineStore('theme', {
         name: 'classic',
         config: null as any,
     }),
-
     actions: {
-        async loadFromServer() {
-            try {
-                const res = await $fetch('/api/theme')
-                this.name = res.theme || 'classic'
-            } catch {
-                this.name = 'classic'
-            }
-
-            const module = await loadTheme(this.name)
+        async loadThemeModule(themeName: string) {
+            this.name = themeName
+            const module = await loadTheme(themeName)
             this.config = module.default
         },
     },
