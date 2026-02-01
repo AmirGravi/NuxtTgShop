@@ -1,4 +1,4 @@
-import { loadTheme } from '~/utils/themeLoader'
+import { resolveThemePage } from '@/utils/resolveThemePage'
 import { defineStore } from 'pinia'
 
 export const useThemeStore = defineStore('theme', {
