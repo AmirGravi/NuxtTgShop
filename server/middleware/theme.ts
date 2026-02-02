@@ -1,33 +1,36 @@
 import { getCookie, setCookie } from 'h3'
 
+const THEME_COOKIE_MAX_AGE_SEC = 60 * 60
+const THEME_FETCH_TTL_MS = 60 * 1000
+let themeCache: { value: string; expiresAt: number } | null = null
+
 export default defineEventHandler(async (event) => {
-    console.log('[theme] middleware start', { url: event.node.req.url })
     const themeCookie = getCookie(event, 'selected-theme')
     const config = useRuntimeConfig()
     let activeTheme = themeCookie || 'classic'
 
     try {
-        console.log('[theme] fetching', { url: `${config.public.apiBase}/theme` })
-        const res: any = await $fetch(`${config.public.apiBase}/theme`, {
-            headers: event.node.req.headers as any,
-        })
-        console.log('[theme] fetch ok', { theme: res?.theme })
-        const fetchedTheme = res?.theme || 'classic'
-        if (fetchedTheme !== activeTheme) {
-            activeTheme = fetchedTheme
+        const now = Date.now()
+        if (themeCache && themeCache.expiresAt > now) {
+            activeTheme = themeCache.value
+        } else {
+            const res: any = await $fetch(`${config.public.apiBase}/theme`, {
+                headers: event.node.req.headers as any,
+            })
+            activeTheme = res?.theme || 'classic'
+            themeCache = {
+                value: activeTheme,
+                expiresAt: now + THEME_FETCH_TTL_MS,
+            }
         }
     } catch (err) {
-        console.warn('[theme] fetch failed, using cookie/classic', err)
+        activeTheme = themeCookie || 'classic'
     }
 
-    if (activeTheme !== themeCookie) {
-        setCookie(event, 'selected-theme', activeTheme, {
-            path: '/',
-            maxAge: 60 * 60 * 24 * 365,
-        })
-        console.log('[theme] cookie set', { theme: activeTheme })
-    } else {
-        console.log('[theme] cookie unchanged', { theme: activeTheme })
-    }
+    setCookie(event, 'selected-theme', activeTheme, {
+        path: '/',
+        maxAge: THEME_COOKIE_MAX_AGE_SEC,
+    })
+
     event.context.themeName = activeTheme
 })

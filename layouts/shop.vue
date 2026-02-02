@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { useThemeStore } from '~/stores/theme'
 import { defineAsyncComponent } from 'vue'
+import { useHead } from '#app'
 
 const themeStore = useThemeStore()
 
@@ -26,5 +27,9 @@ const modeCookie = useCookie<'light' | 'dark'>("shop-theme-mode", {
 
 const shopThemeName = computed(() => (modeCookie.value === "dark" ? "dark" : "light"))
 
+const themeHeadLinks = computed(() => themeStore.config?.head?.link || [])
+useHead(() => ({
+  link: themeHeadLinks.value,
+}))
 
 </script>

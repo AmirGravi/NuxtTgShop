@@ -1,7 +1,10 @@
 <template>
 
-Tesssssssssst
-
+<div>
+  <span>
+    Tesssssssssst
+  </span>
+</div>
 </template>
 
 <script setup >
