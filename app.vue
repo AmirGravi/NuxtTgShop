@@ -10,25 +10,17 @@
 <script setup lang="ts">
 import Alert from '~/components/CE/alert.vue'
 import { useThemeStore } from '~/stores/theme'
-const { $axios } = useNuxtApp()
 
 const route = useRoute()
 const themeStore = useThemeStore()
 
-let activeThemeName
-
-try {
-  const res = await $axios.get('/theme')
-  activeThemeName = res.data.theme || 'classic'
-} catch (error) {
-  console.error('Failed to fetch theme, using classic')
-  activeThemeName = 'classic'
-}
 const themeCookie = useCookie('selected-theme', {
   default: () => 'classic',
   maxAge: 60 * 60 * 24 * 365
 })
-themeCookie.value = activeThemeName
+const event = process.server ? useRequestEvent() : null
+const serverThemeName = event?.context?.themeName as string | undefined
+const activeThemeName = serverThemeName || themeCookie.value
 
 await themeStore.loadThemeModule(activeThemeName)
 

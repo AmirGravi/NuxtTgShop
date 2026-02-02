@@ -1,10 +1,8 @@
-const modules: Record<string, { default: { vuetifyThemes: any } }> = import.meta.glob('./*/vuetify.ts', { eager: true })
+const modules: Record<string, () => Promise<{ default: { vuetifyThemes: any } }>> = import.meta.glob('./*/vuetify.ts')
 
-const themes: Record<string, any> = {}
-
-for (const path in modules) {
-    const name = path.split('/')[1]
-    themes[name] = modules[path].default.vuetifyThemes
+export async function loadVuetifyThemes(themeName: string) {
+    const key = Object.keys(modules).find((path) => path.includes(`/${themeName}/vuetify.ts`))
+    if (!key) return null
+    const mod = await modules[key]()
+    return mod.default.vuetifyThemes
 }
-
-export { themes }
