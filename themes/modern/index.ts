@@ -5,5 +5,8 @@ export default {
     layouts: {
         default: 'default',
     },
+    head: {
+        link: [],
+    },
     vuetify,
 }

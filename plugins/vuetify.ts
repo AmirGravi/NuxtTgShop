@@ -3,14 +3,21 @@ import { defineNuxtPlugin } from '#app'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import 'vuetify/styles'
-import { themes } from '~/themes/index'
 import adminTheme from '~/themes/admin/vuetify'
 
-export default defineNuxtPlugin((nuxtApp) => {
-    const themeMap: any = themes
+export default defineNuxtPlugin(async (nuxtApp) => {
     const themeCookie = useCookie('selected-theme', { default: () => 'classic' })
-    const activeThemeName = themeCookie.value
-    const activeThemeConfig = themeMap[activeThemeName]
+    const event = process.server ? useRequestEvent() : null
+    const serverThemeName = event?.context?.themeName as string | undefined
+    const activeThemeName = serverThemeName || themeCookie.value
+    let activeThemeConfig: any
+    try {
+        const themeModule = await import(`~/themes/${activeThemeName}/vuetify`)
+        activeThemeConfig = themeModule.default.vuetifyThemes
+    } catch (err) {
+        const fallbackModule = await import('~/themes/classic/vuetify')
+        activeThemeConfig = fallbackModule.default.vuetifyThemes
+    }
 
     const modeCookie = useCookie('app-theme', { default: () => 'system' })
 

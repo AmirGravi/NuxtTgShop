@@ -8,6 +8,7 @@
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "validate:themes": "node scripts/validate-themes.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
